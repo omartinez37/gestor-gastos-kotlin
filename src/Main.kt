@@ -1,8 +1,40 @@
 package src
 
 fun main() {
-    println("Gestor semanal de gastos")
+    // Listas paralelas para almacenar la información
+    val conceptos = mutableListOf<String>()
+    val categorias = mutableListOf<String>()
+    val montos = mutableListOf<Double>()
+
+    var opcion: String?
+
+    do {
+        println("\nGESTOR SEMANAL DE GASTOS\n")
+        println("1. Registrar gasto")
+        println("2. Mostrar todos los gastos")
+        println("3. Calcular gasto total")
+        println("4. Mostrar gasto mayor")
+        println("5. Mostrar gastos por categoría")
+        println("6. Mostrar resumen semanal")
+        println("7. Salir\n")
+        print("Seleccione una opción: ")
+
+        opcion = readlnOrNull()?.trim()
+
+        when (opcion) {
+            "1" -> registrarGasto(conceptos, categorias, montos)
+            "2" -> mostrarGastos(conceptos, categorias, montos)
+            "3", "4", "5", "6" -> println("\n[Info] Esta opción será implementada por el Estudiante B.")
+            "7" -> println("\n¡Saliendo del programa! Hasta luego.")
+            else -> println("\nOpción no válida. Por favor, seleccione un número del 1 al 7.")
+        }
+
+    } while (opcion != "7")
 }
+
+//--Fase 3. Trabajo del estudiante A--//
+
+// Commit 1 Agrega función para registrar gastos //
 
 fun registrarGasto(
     conceptos: MutableList<String>,
@@ -56,4 +88,29 @@ fun registrarGasto(
     montos.add(monto)
 
     println("\n¡Gasto registrado correctamente!")
+}
+
+//commit 2 Agrega listado de gastos registrados //
+
+fun mostrarGastos(
+    conceptos: List<String>,
+    categorias: List<String>,
+    montos: List<Double>
+) {
+    println("\nGASTOS REGISTRADOS\n")
+
+    if (conceptos.isEmpty()) {
+        println("No hay gastos registrados en este momento.")
+        return
+    }
+
+    // Recorrer las listas paralelas
+    for (i in conceptos.indices) {
+        val indice = "${i + 1}."
+        val conceptoFormateado = conceptos[i].padEnd(15)
+        val categoriaFormateada = categorias[i].padEnd(20)
+        val montoFormateado = "$%.2f".format(montos[i])
+
+        println("$indice $conceptoFormateado | $categoriaFormateada | $montoFormateado")
+    }
 }
