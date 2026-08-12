@@ -1,5 +1,22 @@
 package src
 
+//Crear función registrarGasto
+//Crear función mostrarGastos
+//Declarar variables de la función registrarGastos
+    //val conceptos
+    // val categorias
+    // val montos
+//Crear categorias para los conceptos:
+    //  Alimentos
+    //  Transporte
+    //  Materiales escolares
+    //  Entretenimiento
+    //  Otros
+//Mostrar menu de opciones
+//Mostrar categorias
+//Mostrar Conceptos registrados
+//buclce del menu
+
 fun main() {
     // Listas paralelas para almacenar la información
     val conceptos = mutableListOf<String>()
@@ -9,7 +26,7 @@ fun main() {
     var opcion: String?
 
     do {
-        println("\nGESTOR SEMANAL DE GASTOS\n")
+        println("\nCONTROL PERSONAL DE GASTOS\n")
         println("1. Registrar gasto")
         println("2. Mostrar todos los gastos")
         println("3. Calcular gasto total")
@@ -90,27 +107,28 @@ fun registrarGasto(
     println("\n¡Gasto registrado correctamente!")
 }
 
-//commit 2 Agrega listado de gastos registrados //
+////commit 2 Agrega listado de gastos registrados //
+//
+//fun mostrarGastos(
+//    conceptos: List<String>,
+//    categorias: List<String>,
+//    montos: List<Double>
+//) {
+//    println("\nGASTOS REGISTRADOS\n")
+//
+//    if (conceptos.isEmpty()) {
+//        println("No hay gastos registrados en este momento.")
+//        return
+//    }
+//
+//    // Recorrer las listas paralelas
+//    for (i in conceptos.indices) {
+//        val indice = "${i + 1}."
+//        val conceptoFormateado = conceptos[i].padEnd(15)
+//        val categoriaFormateada = categorias[i].padEnd(20)
+//        val montoFormateado = "$%.2f".format(montos[i])
+//
+//        println("$indice $conceptoFormateado | $categoriaFormateada | $montoFormateado")
+//    }
+//}
 
-fun mostrarGastos(
-    conceptos: List<String>,
-    categorias: List<String>,
-    montos: List<Double>
-) {
-    println("\nGASTOS REGISTRADOS\n")
-
-    if (conceptos.isEmpty()) {
-        println("No hay gastos registrados en este momento.")
-        return
-    }
-
-    // Recorrer las listas paralelas
-    for (i in conceptos.indices) {
-        val indice = "${i + 1}."
-        val conceptoFormateado = conceptos[i].padEnd(15)
-        val categoriaFormateada = categorias[i].padEnd(20)
-        val montoFormateado = "$%.2f".format(montos[i])
-
-        println("$indice $conceptoFormateado | $categoriaFormateada | $montoFormateado")
-    }
-}
