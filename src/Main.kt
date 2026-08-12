@@ -132,3 +132,35 @@ fun mostrarGastos(
     }
 }
 
+///commit 1 Estudiante B //
+
+fun calcularTotal(montos: List<Double>): Double {
+    if (montos.isEmpty()) {
+        return 0.0
+    }
+    var total = 0.0
+    for (monto in montos) {
+        total += monto
+    }
+    return total
+}
+
+ //Encuentra la posición (índice) del gasto con el monto más alto.
+ // Devuelve -1 si la lista está vacía.
+
+fun obtenerPosicionGastoMayor(montos: List<Double>): Int {
+    if (montos.isEmpty()) {
+        return -1
+    }
+
+    var indiceMayor = 0
+    var montoMayor = montos[0]
+
+    for (i in 1 until montos.size) {
+        if (montos[i] > montoMayor) {
+            montoMayor = montos[i]
+            indiceMayor = i
+        }
+    }
+    return indiceMayor
+}
