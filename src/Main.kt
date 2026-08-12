@@ -164,3 +164,50 @@ fun obtenerPosicionGastoMayor(montos: List<Double>): Int {
     }
     return indiceMayor
 }
+
+//Commit 2 Estudiante B//
+
+fun calcularTotalPorCategoria(
+    categorias: List<String>,
+    montos: List<Double>,
+    categoriaBuscada: String
+): Double {
+    if (montos.isEmpty() || categorias.isEmpty()) {
+        return 0.0
+    }
+
+    var totalCategoria = 0.0
+    for (i in montos.indices) {
+        if (categorias[i].equals(categoriaBuscada, ignoreCase = true)) {
+            totalCategoria += montos[i]
+        }
+    }
+    return totalCategoria
+}
+
+fun mostrarResumenSemanal(
+    descripciones: List<String>,
+    montos: List<Double>
+) {
+    println("\nRESUMEN SEMANAL\n")
+
+    if (montos.isEmpty()) {
+        println("No hay gastos registrados todavía.")
+        return
+    }
+
+    val cantidadGastos = montos.size
+    val total = calcularTotal(montos)
+    val promedio = total / cantidadGastos
+    val posMayor = obtenerPosicionGastoMayor(montos)
+
+    println("Número de gastos: $cantidadGastos")
+    println("Gasto total: $${String.format("%.2f", total)}")
+    println("Promedio por gasto: $${String.format("%.2f", promedio)}")
+
+    if (posMayor != -1) {
+        val descripcionMayor = descripciones[posMayor]
+        val montoMayor = montos[posMayor]
+        println("Gasto mayor: $descripcionMayor, $${String.format("%.2f", montoMayor)}")
+    }
+}
